@@ -1,0 +1,23 @@
+name:                brainfuck
+version:             0.1.0.0
+synopsis:            Concise Brainfuck Interpreter using ListZippers
+description:         Concise Brainfuck Interpreter using ListZippers
+homepage:            https://github.com/siddhanathan/brainfuck
+license:             GPL-3
+license-file:        LICENSE
+author:              Siddhanathan Shanmugam
+maintainer:          siddhanathan@gmail.com
+copyright:           (C) 2015 Siddhanathan Shanmugam
+category:            Language
+build-type:          Simple
+cabal-version:       >=1.8
+
+source-repository head
+  type:     git
+  location: https://github.com/siddhanathan/brainfuck/
+
+executable brainfuck
+  main-is:             Main.hs
+  hs-source-dirs:      src
+  build-depends:       base ==4.6.*,
+                       ListZipper

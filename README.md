@@ -2,14 +2,35 @@
 
 Concise Brainfuck Interpreter using ListZippers in Haskell
 
-Example:
---------
+Written in under 50 lines of code.
+
+Usage:
+------
+
+You could use Cabal to run the executable:
 
 ~~~ bash
-$ runhaskell brainfuck.hs examples/hello.bf
+$ cabal run brainfuck examples/hello.bf
+
+Preprocessing executable 'brainfuck' for brainfuck-0.1.0.0...
+Running brainfuck...
+Hello World!
 ~~~
 
-Written in a concise manner, ignoring any performance concerns.
+Or run the file manually, if you already have ListZipper installed:
 
-Depends on the listzipper package.
+~~~ bash
+$ runhaskell src/Main.hs examples/hello.bf
+Hello World!
+~~~
+
+Details:
+--------
+
+Written in a concise manner, ignoring any performance concerns.
+Unlike most solutions, this is purely functional with no mutations.
+Unlike some concise solutions, handles nested loops perfectly fine.
+
+Uses two ListZippers, one for the bytes being incremented, and
+one for the source code being read.
 

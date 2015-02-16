@@ -1,3 +1,14 @@
+-- |
+-- Copyright: (C) 2015 Siddhanathan Shanmugam
+-- License: GPL (see LICENSE)
+-- Maintainer: siddhanathan@gmail.com
+-- Portability: very
+--
+-- Concise Brainfuck Interpreter using ListZippers
+--
+
+module Main where
+
 import Control.Applicative ((<$>))
 import Data.Char (ord, chr)
 import Data.List.Zipper (Zipper, fromList, left, right, cursor, replace, beginp, endp)
@@ -31,5 +42,5 @@ f zi zc
   | otherwise                          = f zi (right zc)
 
 main :: IO ()
-main = head <$> getArgs >>= readFile >>= \x -> f (fromList $ replicate 10000 0) (fromList x)
+main = head <$> getArgs >>= readFile >>= \x -> f (fromList $ replicate 30000 0) (fromList x)
 
