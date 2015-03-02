@@ -28,9 +28,14 @@ Details:
 --------
 
 Written in a concise manner, ignoring any performance concerns.
-Unlike most solutions, this is purely functional with no mutations.
+
+Unlike most solutions, this is purely functional.
+
 Unlike some concise solutions, handles nested loops perfectly fine.
 
 Uses two ListZippers, one for the bytes being incremented, and
 one for the source code being read.
+
+Additionally, there’s one variation of the program written using
+the state monad transformer present in `src/state.hs`.
 

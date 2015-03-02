@@ -19,13 +19,14 @@ data Direction = L | R deriving Eq
 loopTraverse :: Direction -> Zipper Char -> Zipper Char
 loopTraverse d z = l d z 0
   where l :: Direction -> Zipper Char -> Int -> Zipper Char
-        l d z n
-          | d == L && cursor z == ']' = l d (left z) (n+1)
-          | d == L && cursor z /= '[' = l d (left z) n
-          | d == L && cursor z == '[' = if n == 0 then z else l d (left z) (n-1)
-          | d == R && cursor z == '[' = l d (right z) (n+1)
-          | d == R && cursor z /= ']' = l d (right z) n
-          | d == R && cursor z == ']' = if n == 0 then right z else l d (right z) (n-1)
+        l d z n = case (d, cursor z) of
+          (L, ']') -> l d (left z) (n+1)
+          (L, '[') -> if n == 0 then z else l d (left z) (n-1)
+          (L,  _ ) -> l d (left z) n
+          (R, '[') -> l d (right z) (n+1)
+          (R, ']') -> if n == 0 then right z else l d (right z) (n-1)
+          (R,  _ ) -> l d (right z) n
+
 
 f :: Zipper Int -> Zipper Char -> IO ()
 f zi zc
